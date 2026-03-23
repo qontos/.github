@@ -13,7 +13,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_CHECKER="$SCRIPT_DIR/../scripts/check-repo-docs.sh"
 CROSS_CHECKER="$SCRIPT_DIR/../scripts/check-doc-consistency.sh"
-FIXTURES="$SCRIPT_DIR/doc-check-fixtures"
+FIXTURES="$SCRIPT_DIR/test-fixtures"
 PASS=0
 FAIL=0
 
@@ -85,6 +85,32 @@ rm "$CROSS_TMP/qontos-examples/requirements.txt"  # restore
 # Bare pip install
 echo "pip install qontos" > "$CROSS_TMP/qontos-sim/README.md"
 run_test "cross: bare pip install fails" "$CROSS_CHECKER" "$CROSS_TMP" "fail"
+
+# --- Integration test: real layout with fixtures ---
+echo ""
+echo "--- Integration: real layout with negative fixtures ---"
+
+# Build a tree that mimics the actual .github repo layout
+INT_TMP=$(mktemp -d)
+for repo in .github qontos qontos-sim qontos-examples qontos-benchmarks qontos-research; do
+    mkdir -p "$INT_TMP/$repo"
+    echo "Report to security@qontos.io" > "$INT_TMP/$repo/SECURITY.md"
+    echo "pip install git+https://github.com/qontos/qontos.git@v0.2.0" > "$INT_TMP/$repo/README.md"
+done
+echo "git+https://github.com/qontos/qontos.git@v0.2.0" > "$INT_TMP/qontos-sim/requirements.txt"
+echo "git+https://github.com/qontos/qontos-sim.git@v0.1.0" >> "$INT_TMP/qontos-examples/requirements.txt"
+
+# Add negative test fixtures (should be IGNORED by production checker)
+# Use the EXCLUDED directory name (doc-check-fixtures) to prove the exclusion works
+mkdir -p "$INT_TMP/.github/tests/doc-check-fixtures/fail-security"
+echo "Report to security@wrong.com" > "$INT_TMP/.github/tests/doc-check-fixtures/fail-security/SECURITY.md"
+mkdir -p "$INT_TMP/.github/tests/doc-check-fixtures/fail-pip"
+echo "pip install qontos" > "$INT_TMP/.github/tests/doc-check-fixtures/fail-pip/README.md"
+mkdir -p "$INT_TMP/.github/tests/doc-check-fixtures/fail-main"
+echo "git+https://github.com/qontos/qontos.git@main" > "$INT_TMP/.github/tests/doc-check-fixtures/fail-main/requirements.txt"
+
+run_test "integration: real layout with fixtures passes" "$CROSS_CHECKER" "$INT_TMP" "pass"
+rm -rf "$INT_TMP"
 
 echo ""
 echo "======================="

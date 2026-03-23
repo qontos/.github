@@ -16,13 +16,25 @@ SIM_TAG="v0.1.0"
 
 REPOS=".github qontos qontos-sim qontos-examples qontos-benchmarks qontos-research"
 
-# Build file list across all repos (same find logic as check-repo-docs.sh)
+# Build file list across all repos (same find logic as check-repo-docs.sh).
+#
+# EXCLUSION POLICY:
+#   - .git/             → not docs
+#   - node_modules/     → not docs
+#   - *_executed*       → temp notebook outputs
+#   - tests/doc-check-fixtures/ → negative test fixtures that intentionally
+#     contain banned patterns (bad emails, stale installs, @main refs).
+#     These are test assets, NOT public documentation.
+#   - doc-check-fixtures/ → same, in case path structure varies
 FILES=""
 for repo in $REPOS; do
     if [ -d "$BASE/$repo" ]; then
         REPO_FILES=$(find "$BASE/$repo" -maxdepth 4 \
             \( -name '*.md' -o -name '*.txt' -o -name '*.toml' -o -name '*.ipynb' -o -name 'requirements*.txt' \) \
-            -not -path '*/.git/*' -not -path '*/node_modules/*' -not -path '*_executed*' \
+            -not -path '*/.git/*' \
+            -not -path '*/node_modules/*' \
+            -not -path '*_executed*' \
+            -not -path '*/doc-check-fixtures/*' \
             2>/dev/null || true)
         FILES="$FILES
 $REPO_FILES"
