@@ -2,28 +2,34 @@
   <img src="https://raw.githubusercontent.com/qontos/qontos/main/assets/qontos-logo.png" alt="QONTOS" width="320">
 </p>
 
-<h3 align="center">Quantum computing orchestration. Software-first. Hardware-agnostic. Modular-native.</h3>
+# QONTOS
 
-<p align="center">
-  <a href="https://qontos.dev">Documentation</a> &middot;
-  <a href="https://github.com/qontos/qontos-examples">Examples</a> &middot;
-  <a href="https://github.com/orgs/qontos/discussions">Discussions</a>
-</p>
+QONTOS is a full-stack modular quantum computing company. The public QONTOS organization provides open orchestration software, simulators, examples, benchmarks, and research artifacts, while the private engineering program develops native modular superconducting quantum hardware, control systems, fault tolerance, interconnects, and cryogenic infrastructure.
+
+Start here with the flagship SDK, then explore simulators, examples, benchmarks, and research.
 
 ---
 
-QONTOS is a distributed quantum computing orchestration platform. Submit quantum circuits once -- QONTOS handles partitioning, scheduling, execution, aggregation, and verification across any combination of quantum backends.
-
-## Start Here
+## Open Today
 
 | Repository | Description |
 |---|---|
-| [`qontos`](https://github.com/qontos/qontos) | Python SDK for quantum circuit orchestration |
-| [`qontos-sim`](https://github.com/qontos/qontos-sim) | Simulators and modular digital twin |
-| [`qontos-examples`](https://github.com/qontos/qontos-examples) | Tutorials, notebooks, and integration examples |
-| [`qontos-benchmarks`](https://github.com/qontos/qontos-benchmarks) | Benchmark framework and reproducible methodology |
+| [`qontos`](https://github.com/qontos/qontos) | Flagship Python SDK for modular quantum computing orchestration |
+| [`qontos-sim`](https://github.com/qontos/qontos-sim) | Simulators, noisy models, digital twin, and tensor-network engine |
+| [`qontos-examples`](https://github.com/qontos/qontos-examples) | Hands-on notebooks, tutorials, and runnable sample programs |
+| [`qontos-benchmarks`](https://github.com/qontos/qontos-benchmarks) | Benchmark definitions, methodology, and reproducible outputs |
+| [`qontos-research`](https://github.com/qontos/qontos-research) | Research artifacts, whitepapers, and technical reports |
+| [`.github`](https://github.com/qontos/.github) | Org profile, contributing guide, and community health files |
 
-## Install
+## In Development
+
+Native QONTOS modular superconducting quantum hardware, pulse and calibration control, fault-tolerant quantum computing stack, photonic interconnects, and cryogenic infrastructure.
+
+## Stretch Roadmap
+
+1,000,000 physical qubits and 10,000 logical qubits by 2030, gated by device, FTQC, interconnect, cryogenic, and control milestones.
+
+## Quick Start
 
 ```bash
 pip install qontos
@@ -38,22 +44,11 @@ result = client.get_result(job.id)
 print(result.counts)
 ```
 
-## Capabilities
+## Links
 
-- **Multi-format circuit ingestion** -- OpenQASM 2.0/3.0, Qiskit, PennyLane
-- **Circuit partitioning** -- Greedy, spectral, and manual strategies
-- **Capability-aware scheduling** -- Fidelity, queue depth, cost, and capacity scoring
-- **Multi-provider execution** -- IBM Quantum, Amazon Braket, local simulators, extensible
-- **Cryptographic execution proofs** -- SHA-256 hash chain for full auditability
-- **Modular-native design** -- Built for distributed quantum modules from day one
-
-## Documentation
-
-Full guides, API reference, and architecture docs at **[qontos.dev](https://qontos.dev)**.
-
-## Contributing
-
-See [CONTRIBUTING.md](https://github.com/qontos/.github/blob/main/CONTRIBUTING.md) for development setup, code standards, and pull request guidelines.
+- **Documentation**: [qontos.dev](https://qontos.dev)
+- **Research**: [qontos/qontos-research](https://github.com/qontos/qontos-research)
+- **Contact**: [eng@qontos.dev](mailto:eng@qontos.dev)
 
 ## License
 
@@ -61,4 +56,4 @@ All public QONTOS repositories are licensed under [Apache 2.0](https://www.apach
 
 ---
 
-Built by [Zhyra Quantum Research Institute (ZQRI)](https://zhyra.xyz), Abu Dhabi.
+Built by [Zhyra Quantum Research Institute (ZQRI)](https://zhyra.xyz), Abu Dhabi, UAE.
