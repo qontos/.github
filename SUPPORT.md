@@ -8,7 +8,7 @@
 | [GitHub Discussions](https://github.com/orgs/qontos/discussions) | Questions, ideas, and community discussion |
 | [Documentation](https://qontos.dev) | Guides, API reference, tutorials |
 | [Examples](https://github.com/qontos/qontos-examples) | Code samples and notebooks |
-| qontos@zhyra.xyz | Direct support inquiries |
+| rameshtamilselvan@gmail.com | Direct support inquiries |
 
 ## Before Opening an Issue
 
