@@ -44,11 +44,12 @@ echo "======================="
 # --- Per-repo checker (check-repo-docs.sh) ---
 echo ""
 echo "--- Per-repo checker ---"
-run_test "repo: clean passes"           "$REPO_CHECKER" "$FIXTURES/pass"              "pass"
-run_test "repo: bad security fails"     "$REPO_CHECKER" "$FIXTURES/fail-security"     "fail"
-run_test "repo: bare pip install fails" "$REPO_CHECKER" "$FIXTURES/fail-pip"          "fail"
-run_test "repo: @main in .md fails"     "$REPO_CHECKER" "$FIXTURES/fail-main"         "fail"
-run_test "repo: @main in req.txt fails" "$REPO_CHECKER" "$FIXTURES/fail-requirements" "fail"
+run_test "repo: clean passes"              "$REPO_CHECKER" "$FIXTURES/pass"              "pass"
+run_test "repo: bad security fails"        "$REPO_CHECKER" "$FIXTURES/fail-security"     "fail"
+run_test "repo: bare pip install fails"    "$REPO_CHECKER" "$FIXTURES/fail-pip"          "fail"
+run_test "repo: @main in .md fails"        "$REPO_CHECKER" "$FIXTURES/fail-main"         "fail"
+run_test "repo: @main in req.txt fails"    "$REPO_CHECKER" "$FIXTURES/fail-requirements" "fail"
+run_test "repo: stale notebook pip fails"  "$REPO_CHECKER" "$FIXTURES/fail-notebook"     "fail"
 
 # --- Cross-repo checker (check-doc-consistency.sh) ---
 # The cross-repo checker expects repos as subdirectories, so we wrap

@@ -20,9 +20,10 @@ REPOS=".github qontos qontos-sim qontos-examples qontos-benchmarks qontos-resear
 FILES=""
 for repo in $REPOS; do
     if [ -d "$BASE/$repo" ]; then
-        REPO_FILES=$(find "$BASE/$repo" -maxdepth 3 \
-            \( -name '*.md' -o -name '*.txt' -o -name '*.toml' -o -name 'requirements*.txt' \) \
-            -not -path '*/.git/*' -not -path '*/node_modules/*' 2>/dev/null || true)
+        REPO_FILES=$(find "$BASE/$repo" -maxdepth 4 \
+            \( -name '*.md' -o -name '*.txt' -o -name '*.toml' -o -name '*.ipynb' -o -name 'requirements*.txt' \) \
+            -not -path '*/.git/*' -not -path '*/node_modules/*' -not -path '*_executed*' \
+            2>/dev/null || true)
         FILES="$FILES
 $REPO_FILES"
     fi
