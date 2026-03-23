@@ -16,11 +16,22 @@ jobs:
         with:
           path: .github
 
-      - name: Checkout public repos
+      - name: Checkout all public repos (fail-fast on missing)
         run: |
+          set -e
+          FAILED=0
           for repo in qontos qontos-sim qontos-examples qontos-benchmarks qontos-research; do
-            git clone --depth=1 "https://github.com/qontos/${repo}.git" "${repo}" 2>/dev/null || echo "Could not clone ${repo}"
+            echo "Cloning ${repo}..."
+            if ! git clone --depth=1 "https://github.com/qontos/${repo}.git" "${repo}" 2>&1; then
+              echo "::error::Failed to clone qontos/${repo}"
+              FAILED=$((FAILED + 1))
+            fi
           done
+          if [ "$FAILED" -gt 0 ]; then
+            echo "::error::${FAILED} repo(s) failed to clone — checker cannot run with incomplete data"
+            exit 1
+          fi
+          echo "All 5 public repos cloned successfully"
 
       - name: Run doc-consistency checker
         run: bash .github/scripts/check-doc-consistency.sh .
