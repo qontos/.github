@@ -39,11 +39,11 @@ QONTOS is building a native modular superconducting quantum computer:
 - Pulse-level control and real-time calibration
 - Stretch roadmap: **1,000,000 physical qubits** and **10,000 logical qubits** by 2030
 
-## Quick Install
+## Quick Install (pre-release)
 
 ```bash
-pip install qontos        # SDK
-pip install qontos-sim    # Simulators
+pip install git+https://github.com/qontos/qontos.git@v0.2.0        # SDK
+pip install git+https://github.com/qontos/qontos-sim.git@v0.1.0    # Simulators
 ```
 
 ## Links
