@@ -1,0 +1,66 @@
+name: Benchmark Regression
+description: Report a regression in benchmark results
+title: "[Benchmark]: "
+labels: ["benchmark", "regression"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to report a benchmark regression. Include as much detail as possible so we can reproduce and investigate.
+  - type: input
+    id: benchmark_name
+    attributes:
+      label: Benchmark Name
+      description: Name or identifier of the benchmark that regressed.
+      placeholder: "e.g., ghz_fidelity_16q, qaoa_maxcut_8q"
+    validations:
+      required: true
+  - type: input
+    id: expected_fidelity
+    attributes:
+      label: Expected Fidelity
+      description: The fidelity value from the last known good run.
+      placeholder: "e.g., 0.9842"
+    validations:
+      required: true
+  - type: input
+    id: actual_fidelity
+    attributes:
+      label: Actual Fidelity
+      description: The fidelity value from the regressed run.
+      placeholder: "e.g., 0.9215"
+    validations:
+      required: true
+  - type: input
+    id: backend
+    attributes:
+      label: Backend
+      description: Which backend or simulator was used?
+      placeholder: "e.g., qontos-sim (statevector), IBM Quantum (ibm_brisbane)"
+    validations:
+      required: true
+  - type: textarea
+    id: configuration
+    attributes:
+      label: Configuration
+      description: |
+        Relevant configuration details. Include any of the following that apply:
+        - Shots
+        - Partitioning strategy
+        - Scheduling policy
+        - Noise model
+        - Package versions (qontos, qontos-sim, qontos-bench)
+      render: yaml
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: Commit or Version
+      description: The commit SHA or package version where the regression was observed.
+      placeholder: "e.g., abc1234 or qontos==0.2.1"
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional Context
+      description: Any other information, logs, or screenshots that might help.

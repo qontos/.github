@@ -1,0 +1,42 @@
+name: Documentation Improvement
+description: Suggest an improvement or report an issue with QONTOS documentation
+title: "[Docs]: "
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Help us improve the QONTOS documentation. This template covers guides, API references, docstrings, tutorials, and inline code comments.
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      description: What kind of documentation change is this?
+      options:
+        - Fix incorrect information
+        - Improve clarity or add detail
+        - Add missing documentation
+        - Fix broken link or example
+        - Typo or formatting
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: Location
+      description: URL, file path, or section name where the issue exists.
+      placeholder: "e.g., https://qontos.dev/api/partitioner or qontos/src/partitioner.py"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe what is wrong or missing and what the documentation should say instead.
+    validations:
+      required: true
+  - type: textarea
+    id: suggested_change
+    attributes:
+      label: Suggested Change
+      description: If you have a specific wording or content suggestion, include it here.
