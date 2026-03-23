@@ -1,0 +1,26 @@
+name: Doc Consistency
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check-docs:
+    name: Public Documentation Consistency
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout org meta
+        uses: actions/checkout@v4
+        with:
+          path: .github
+
+      - name: Checkout public repos
+        run: |
+          for repo in qontos qontos-sim qontos-examples qontos-benchmarks qontos-research; do
+            git clone --depth=1 "https://github.com/qontos/${repo}.git" "${repo}" 2>/dev/null || echo "Could not clone ${repo}"
+          done
+
+      - name: Run doc-consistency checker
+        run: bash .github/scripts/check-doc-consistency.sh .

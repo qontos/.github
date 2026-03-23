@@ -45,7 +45,7 @@ echo "--- Check 2: No aspirational pip install ---"
 ASPIRATIONAL=$(grep -rn 'pip install qontos\b\|pip install qontos-sim\b\|pip install qontos-bench\b' \
     "$BASE"/{.github,qontos,qontos-sim,qontos-examples,qontos-benchmarks,qontos-research}/*.md \
     "$BASE"/{.github,qontos,qontos-sim,qontos-examples,qontos-benchmarks,qontos-research}/**/*.md \
-    2>/dev/null | grep -v 'git+' | grep -v 'simplify' | grep -v 'Once published' | grep -v 'will simplify' || true)
+    2>/dev/null | grep -v 'git+' | grep -v 'simplify' | grep -v 'Once published' | grep -v 'will simplify' | grep -v 'Never write' | grep -v 'CONTRIBUTING' || true)
 
 if [ -n "$ASPIRATIONAL" ]; then
     echo "  ✗ Found aspirational pip install (packages not on PyPI yet):"
@@ -64,7 +64,7 @@ AT_MAIN=$(grep -rn '@main' \
     "$BASE"/{.github,qontos,qontos-sim,qontos-examples,qontos-benchmarks,qontos-research}/*.md \
     "$BASE"/{.github,qontos,qontos-sim,qontos-examples,qontos-benchmarks,qontos-research}/*.txt \
     "$BASE"/{.github,qontos,qontos-sim,qontos-examples,qontos-benchmarks,qontos-research}/*.toml \
-    2>/dev/null || true)
+    2>/dev/null | grep -v 'Never use' | grep -v 'CONTRIBUTING' || true)
 
 if [ -n "$AT_MAIN" ]; then
     echo "  ✗ Found @main references (should use pinned tags):"
@@ -72,6 +72,74 @@ if [ -n "$AT_MAIN" ]; then
     ERRORS=$((ERRORS + 1))
 else
     echo "  ✓ No @main references found"
+fi
+
+# ---------------------------------------------------------------
+# Check 4: Support email consistency
+# ---------------------------------------------------------------
+echo ""
+echo "--- Check 4: Support email ---"
+SUPPORT_EMAIL="enterprise@qontos.io"
+STALE_SUPPORT=$(grep -rn 'enterprise@\|support@' \
+    "$BASE"/{.github,qontos,qontos-sim,qontos-examples,qontos-benchmarks,qontos-research}/*.md \
+    "$BASE"/{.github,qontos,qontos-sim,qontos-examples,qontos-benchmarks,qontos-research}/**/*.md \
+    2>/dev/null | grep -v "$SUPPORT_EMAIL" | grep -v 'node_modules' | grep -v 'qontos@zhyra.xyz' | grep -v 'rameshtamilselvan' || true)
+
+if [ -n "$STALE_SUPPORT" ]; then
+    echo "  ✗ Found non-canonical enterprise/support email references:"
+    echo "$STALE_SUPPORT" | sed 's/^/    /'
+    ERRORS=$((ERRORS + 1))
+else
+    echo "  ✓ Enterprise support references are consistent"
+fi
+
+# ---------------------------------------------------------------
+# Check 5: Pinned tag consistency across repos
+# ---------------------------------------------------------------
+echo ""
+echo "--- Check 5: Pinned tag versions ---"
+TAG_ISSUES=""
+
+# SDK tag should be consistent
+SDK_REFS=$(grep -rc "@${SDK_TAG}" \
+    "$BASE"/{qontos-sim,qontos-examples}/ \
+    2>/dev/null | awk -F: '{s+=$2} END {print s+0}')
+if [ "${SDK_REFS:-0}" -lt 1 ]; then
+    TAG_ISSUES="${TAG_ISSUES}\n  SDK tag ${SDK_TAG} not found in sim/examples deps"
+fi
+
+# Sim tag should be consistent
+SIM_REFS=$(grep -rc "@${SIM_TAG}" \
+    "$BASE"/qontos-examples/ \
+    2>/dev/null | awk -F: '{s+=$2} END {print s+0}')
+if [ "${SIM_REFS:-0}" -lt 1 ]; then
+    TAG_ISSUES="${TAG_ISSUES}\n  Sim tag ${SIM_TAG} not found in examples deps"
+fi
+
+if [ -n "$TAG_ISSUES" ]; then
+    echo "  ✗ Tag inconsistencies:"
+    echo -e "$TAG_ISSUES" | sed 's/^/    /'
+    ERRORS=$((ERRORS + 1))
+else
+    echo "  ✓ SDK ${SDK_TAG} and Sim ${SIM_TAG} referenced consistently"
+fi
+
+# ---------------------------------------------------------------
+# Check 6: No stale homepage/docs URLs
+# ---------------------------------------------------------------
+echo ""
+echo "--- Check 6: No stale URLs ---"
+STALE_URLS=$(grep -rn 'qontos\.dev\|docs\.qontos\.' \
+    "$BASE"/{.github,qontos,qontos-sim,qontos-examples,qontos-benchmarks,qontos-research}/*.md \
+    "$BASE"/{.github,qontos,qontos-sim,qontos-examples,qontos-benchmarks,qontos-research}/**/*.md \
+    2>/dev/null || true)
+
+if [ -n "$STALE_URLS" ]; then
+    echo "  ⚠ Found docs URLs that may not resolve yet (verify manually):"
+    echo "$STALE_URLS" | head -5 | sed 's/^/    /'
+    # Warning only, not a hard failure
+else
+    echo "  ✓ No potentially stale docs URLs found"
 fi
 
 # ---------------------------------------------------------------

@@ -66,6 +66,36 @@ test: add coverage for noisy simulation edge cases
 - **Features:** Use the [Feature Request](https://github.com/qontos/.github/issues/new?template=feature_request.yml) template.
 - **Security:** See [SECURITY.md](SECURITY.md).
 
+## Public Release Policy
+
+QONTOS uses **pinned Git tags** for pre-release distribution until packages are published to PyPI.
+
+### Current policy
+
+| Rule | Value |
+|------|-------|
+| Install method | `git+https://github.com/qontos/<repo>.git@<tag>` |
+| SDK current tag | `v0.2.0` |
+| Simulator current tag | `v0.1.0` |
+| Security contact | `security@qontos.io` |
+| Enterprise support | `enterprise@qontos.io` |
+
+### On each public release
+
+1. Tag the SDK repo (`qontos`) with the new version
+2. Update `qontos-sim/pyproject.toml` dependency to the new SDK tag
+3. Tag the sim repo (`qontos-sim`)
+4. Update `qontos-examples/requirements.txt` to both new tags
+5. Update all README install snippets across repos
+6. Run `bash .github/scripts/check-doc-consistency.sh` to verify
+
+### Rules for public-facing docs
+
+- Never write `pip install qontos` or `pip install qontos-sim` as current-state guidance until packages are on PyPI
+- Never use `@main` in install instructions — always pin to a release tag
+- Use `security@qontos.io` for all vulnerability reporting references
+- Mark future-state instructions clearly with "> **Note**: Once published to PyPI..."
+
 ## Code of Conduct
 
 This project follows the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). By participating, you agree to abide by its terms.
