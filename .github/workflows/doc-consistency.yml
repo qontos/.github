@@ -7,9 +7,18 @@ on:
     branches: [main]
 
 jobs:
+  self-test:
+    name: Checker Self-Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run doc-checker self-test suite
+        run: bash tests/test-doc-checker.sh
+
   check-docs:
     name: Public Documentation Consistency
     runs-on: ubuntu-latest
+    needs: [self-test]
     steps:
       - name: Checkout org meta
         uses: actions/checkout@v4
@@ -28,10 +37,10 @@ jobs:
             fi
           done
           if [ "$FAILED" -gt 0 ]; then
-            echo "::error::${FAILED} repo(s) failed to clone — checker cannot run with incomplete data"
+            echo "::error::${FAILED} repo(s) failed to clone"
             exit 1
           fi
-          echo "All 5 public repos cloned successfully"
+          echo "All 5 public repos cloned"
 
-      - name: Run doc-consistency checker
+      - name: Run cross-repo doc-consistency checker
         run: bash .github/scripts/check-doc-consistency.sh .
