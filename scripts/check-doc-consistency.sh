@@ -22,10 +22,10 @@ REPOS=".github qontos qontos-sim qontos-examples qontos-benchmarks qontos-resear
 #   - .git/             → not docs
 #   - node_modules/     → not docs
 #   - *_executed*       → temp notebook outputs
-#   - tests/doc-check-fixtures/ → negative test fixtures that intentionally
-#     contain banned patterns (bad emails, stale installs, @main refs).
+#   - */doc-check-fixtures/  → negative test fixtures (intentional bad patterns)
+#   - */test-fixtures/       → same, renamed self-test fixture directory
+#     Both contain intentional banned patterns for checker self-testing.
 #     These are test assets, NOT public documentation.
-#   - doc-check-fixtures/ → same, in case path structure varies
 FILES=""
 for repo in $REPOS; do
     if [ -d "$BASE/$repo" ]; then
@@ -35,6 +35,7 @@ for repo in $REPOS; do
             -not -path '*/node_modules/*' \
             -not -path '*_executed*' \
             -not -path '*/doc-check-fixtures/*' \
+            -not -path '*/test-fixtures/*' \
             2>/dev/null || true)
         FILES="$FILES
 $REPO_FILES"
