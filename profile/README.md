@@ -1,59 +1,68 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/qontos/qontos/main/assets/qontos-logo.png" alt="QONTOS" width="320">
+  <a href="https://github.com/qontos">
+    <img src="https://raw.githubusercontent.com/qontos/.github/main/assets/qontos-logo.png" alt="QONTOS" width="280">
+  </a>
 </p>
 
-# QONTOS
-
-QONTOS is a full-stack modular quantum computing company. The public QONTOS organization provides open orchestration software, simulators, examples, benchmarks, and research artifacts, while the private engineering program develops native modular superconducting quantum hardware, control systems, fault tolerance, interconnects, and cryogenic infrastructure.
-
-Start here with the flagship SDK, then explore simulators, examples, benchmarks, and research.
+<p align="center">
+  <strong>Full-stack modular quantum computing.</strong><br>
+  Open software and research today. Native hardware in development.
+</p>
 
 ---
 
-## Open Today
+## Start Here
 
 | Repository | Description |
-|---|---|
-| [`qontos`](https://github.com/qontos/qontos) | Flagship Python SDK for modular quantum computing orchestration |
-| [`qontos-sim`](https://github.com/qontos/qontos-sim) | Simulators, noisy models, digital twin, and tensor-network engine |
-| [`qontos-examples`](https://github.com/qontos/qontos-examples) | Hands-on notebooks, tutorials, and runnable sample programs |
-| [`qontos-benchmarks`](https://github.com/qontos/qontos-benchmarks) | Benchmark definitions, methodology, and reproducible outputs |
-| [`qontos-research`](https://github.com/qontos/qontos-research) | Research artifacts, whitepapers, and technical reports |
-| [`.github`](https://github.com/qontos/.github) | Org profile, contributing guide, and community health files |
+|------------|-------------|
+| **[qontos](https://github.com/qontos/qontos)** | Flagship Python SDK — circuit orchestration, partitioning, scheduling, proofs |
+| **[qontos-sim](https://github.com/qontos/qontos-sim)** | Quantum simulators, digital twin, tensor-network engine |
+| **[qontos-benchmarks](https://github.com/qontos/qontos-benchmarks)** | Benchmark framework, methodology, and reproducible evidence |
+| **[qontos-examples](https://github.com/qontos/qontos-examples)** | Tutorials, notebooks, and runnable examples |
+| **[qontos-research](https://github.com/qontos/qontos-research)** | Whitepapers, research papers, roadmap, and figures |
 
-## In Development
+## What's Open Today
 
-Native QONTOS modular superconducting quantum hardware, pulse and calibration control, fault-tolerant quantum computing stack, photonic interconnects, and cryogenic infrastructure.
+- **SDK**: Unified Python interface for quantum circuit orchestration across multiple backends
+- **Simulators**: Local, noisy, digital twin, and tensor-network simulation
+- **Benchmarks**: Reproducible correctness and performance evidence
+- **Examples**: Notebooks and scripts from Bell states to VQE chemistry
+- **Research**: 10-paper series covering architecture, devices, FTQC, interconnects, and roadmap
 
-## Stretch Roadmap
+## What's In Development
 
-1,000,000 physical qubits and 10,000 logical qubits by 2030, gated by device, FTQC, interconnect, cryogenic, and control milestones.
+QONTOS is building a native modular superconducting quantum computer:
 
-## Quick Start
+- Tantalum-silicon transmon qubits and chiplets
+- Modular cryogenic systems with photonic interconnects
+- Adaptive fault-tolerant error correction
+- Pulse-level control and real-time calibration
+- Stretch roadmap: **1,000,000 physical qubits** and **10,000 logical qubits** by 2030
+
+## Quick Install
 
 ```bash
-pip install qontos
-```
-
-```python
-from qontos import QontosClient
-
-client = QontosClient()
-job = client.submit(circuit="OPENQASM 2.0; ...", shots=8192)
-result = client.get_result(job.id)
-print(result.counts)
+pip install qontos        # SDK
+pip install qontos-sim    # Simulators
 ```
 
 ## Links
 
-- **Documentation**: [qontos.dev](https://qontos.dev)
-- **Research**: [qontos/qontos-research](https://github.com/qontos/qontos-research)
-- **Contact**: [eng@qontos.dev](mailto:eng@qontos.dev)
+- [Technical Whitepaper](https://github.com/qontos/qontos-research/blob/main/whitepaper/QONTOS_Technical_Whitepaper.md)
+- [Benchmark Evidence](https://github.com/qontos/qontos-benchmarks/blob/main/docs/evidence.md)
+- [Roadmap 2030](https://github.com/qontos/qontos-research/blob/main/roadmap/ROADMAP_2030.md)
+- [Examples](https://github.com/qontos/qontos-examples)
 
-## License
+## Contributing
 
-All public QONTOS repositories are licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+See [CONTRIBUTING.md](https://github.com/qontos/.github/blob/main/CONTRIBUTING.md) for guidelines.
+
+## Security
+
+Report vulnerabilities to [security@zhyra.xyz](mailto:security@zhyra.xyz). See [SECURITY.md](https://github.com/qontos/.github/blob/main/SECURITY.md).
 
 ---
 
-Built by [Zhyra Quantum Research Institute (ZQRI)](https://zhyra.xyz), Abu Dhabi, UAE.
+<p align="center">
+  <sub>Built by <a href="https://zhyra.xyz">Zhyra Quantum Research Institute</a> · Abu Dhabi, UAE</sub>
+</p>
