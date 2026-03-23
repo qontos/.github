@@ -14,7 +14,7 @@
 
 1. Check the [documentation](https://qontos.dev)
 2. Search [existing issues](https://github.com/qontos/qontos/issues)
-3. Try the latest version: `pip install --upgrade qontos`
+3. Try the latest version: `pip install git+https://github.com/qontos/qontos.git@v0.2.0`
 4. Include a minimal reproducible example in your report
 
 ## Supported Python Versions

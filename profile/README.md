@@ -59,7 +59,7 @@ See [CONTRIBUTING.md](https://github.com/qontos/.github/blob/main/CONTRIBUTING.m
 
 ## Security
 
-Report vulnerabilities to [security@zhyra.xyz](mailto:security@zhyra.xyz). See [SECURITY.md](https://github.com/qontos/.github/blob/main/SECURITY.md).
+Report vulnerabilities to [security@qontos.io](mailto:security@qontos.io). See [SECURITY.md](https://github.com/qontos/.github/blob/main/SECURITY.md).
 
 ---
 
