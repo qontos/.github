@@ -1,6 +1,8 @@
 <div align="center">
 
-# QONTOS
+<img src="https://raw.githubusercontent.com/qontos/.github/main/assets/qontos-logo.png" alt="QONTOS" width="400">
+
+<br>
 
 **Quantum Orchestrated Network for Transformative Optimization Systems**
 
