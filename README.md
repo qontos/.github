@@ -33,7 +33,7 @@ This repository is the organizational control surface for QONTOS on GitHub. It d
 ## What Lives Here
 
 | Path | Purpose |
-| --- | --- |
+| :--- | :--- |
 | `profile/README.md` | Public organization landing page shown at [github.com/qontos](https://github.com/qontos) |
 | `CONTRIBUTING.md`, `SECURITY.md`, `SUPPORT.md`, `CODE_OF_CONDUCT.md` | Shared standards inherited by the broader org |
 | `ISSUE_TEMPLATE/` and `PULL_REQUEST_TEMPLATE.md` | Consistent intake and review structure across repos |
@@ -60,7 +60,7 @@ The `.github` repo currently enforces two important organization-wide trust sign
 ## Related Repositories
 
 | Repository | Role |
-| --- | --- |
+| :--- | :--- |
 | [qontos](https://github.com/qontos/qontos) | Flagship SDK and public developer entry point |
 | [qontos-sim](https://github.com/qontos/qontos-sim) | Simulation, digital twin, and tensor-network modeling |
 | [qontos-examples](https://github.com/qontos/qontos-examples) | Tutorials, notebooks, and runnable example workflows |
