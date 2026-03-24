@@ -52,6 +52,7 @@ pip install git+https://github.com/qontos/qontos-sim.git@v0.1.0    # Simulators
 
 ## Links
 
+- [Public Registry](https://github.com/qontos/.github/blob/main/docs/public-registry.md)
 - [Technical Whitepaper](https://github.com/qontos/qontos-research/blob/main/whitepaper/QONTOS_Technical_Whitepaper.md)
 - [Benchmark Evidence](https://github.com/qontos/qontos-benchmarks/blob/main/docs/evidence.md)
 - [Roadmap 2030](https://github.com/qontos/qontos-research/blob/main/roadmap/ROADMAP_2030.md)
