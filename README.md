@@ -18,6 +18,7 @@
 
   <p>
     <a href="docs/public-registry.md">Public Registry</a> &middot;
+    <a href="docs/release-install-policy.md">Release Policy</a> &middot;
     <a href="#overview">Overview</a> &middot;
     <a href="#what-lives-here">What Lives Here</a> &middot;
     <a href="#org-policies">Org Policies</a> &middot;
@@ -32,6 +33,7 @@
 This repository is the organizational control surface for QONTOS on GitHub. It defines the public profile, shared contribution policies, support and security routes, issue templates, and the consistency checks that keep the public repos aligned.
 
 Use [docs/public-registry.md](docs/public-registry.md) for the shared map across the 6 public QONTOS repositories.
+Use [docs/release-install-policy.md](docs/release-install-policy.md) for the canonical public install and release guidance.
 
 ## What Lives Here
 
@@ -39,6 +41,7 @@ Use [docs/public-registry.md](docs/public-registry.md) for the shared map across
 | :--- | :--- |
 | `profile/README.md` | Public organization landing page shown at [github.com/qontos](https://github.com/qontos) |
 | `docs/public-registry.md` | Shared map across the public SDK, simulators, examples, benchmarks, and research repos |
+| `docs/release-install-policy.md` | Canonical public install and release policy across the open QONTOS repositories |
 | `CONTRIBUTING.md`, `SECURITY.md`, `SUPPORT.md`, `CODE_OF_CONDUCT.md` | Shared standards inherited by the broader org |
 | `ISSUE_TEMPLATE/` and `PULL_REQUEST_TEMPLATE.md` | Consistent intake and review structure across repos |
 | `scripts/` | Cross-repo and per-repo policy checks for public documentation consistency |

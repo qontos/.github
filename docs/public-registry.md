@@ -42,6 +42,7 @@ The public repos intentionally use a lighter documentation shape than the privat
 | :--- | :--- |
 | `README.md` | primary public-facing narrative |
 | `docs/index.md` | lighter docs hub for the repo |
+| `.github/docs/release-install-policy.md` | canonical install and release policy across the public repos |
 | task-specific docs | API surface, methodology, evidence, release checklist, or learning-path docs |
 
 ## How To Use This Registry
