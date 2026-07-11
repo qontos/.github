@@ -9,55 +9,58 @@
 </p>
 
 <p align="center">
-  <strong>Full-stack modular quantum computing.</strong><br>
-  Open software and research today. Native hardware in development.
+  <strong>Architecture intelligence for modular quantum systems.</strong><br>
+  Open software today. Hardware is in early design; no devices have been fabricated yet.
 </p>
 
 ---
 
-## Start Here
+## Open source, available today
+
+These packages are public, installable, and green on their own CI. Every number they
+produce is simulation, labelled as such.
 
 | Repository | Description |
 |------------|-------------|
-| **[qontos](https://github.com/qontos/qontos)** | Flagship Python SDK — circuit orchestration, partitioning, scheduling, proofs |
-| **[qontos-sim](https://github.com/qontos/qontos-sim)** | Quantum simulators, digital twin, tensor-network engine |
-| **[qontos-benchmarks](https://github.com/qontos/qontos-benchmarks)** | Benchmark framework, methodology, and reproducible evidence |
-| **[qontos-examples](https://github.com/qontos/qontos-examples)** | Tutorials, notebooks, and runnable examples |
-| **[qontos-research](https://github.com/qontos/qontos-research)** | Whitepapers, research papers, roadmap, and figures |
+| **[qontos-sim](https://github.com/qontos/qontos-sim)** | Circuit builder, exact statevector and tensor-network (MPS) simulators, and a modular-architecture estimator. NumPy only. |
+| **[qontosq](https://github.com/qontos/qontosq)** | The quantum SDK for the modular architecture: cross-module transpilation to Bell pairs plus feed-forward, link noise, and a QEC-aware logical layer |
+| **[qontos-examples](https://github.com/qontos/qontos-examples)** | Runnable examples, executed in CI against the pinned public releases |
 
-## What's Open Today
-
-- **SDK**: Unified Python interface for quantum circuit orchestration across multiple backends
-- **Simulators**: Local, noisy, digital twin, and tensor-network simulation
-- **Benchmarks**: Reproducible correctness and performance evidence
-- **Examples**: Notebooks and scripts from Bell states to VQE chemistry
-- **Research**: 10-paper series covering architecture, devices, FTQC, interconnects, and roadmap
-
-## What's In Development
-
-QONTOS is building a native modular superconducting quantum computer:
-
-- Tantalum-silicon transmon qubits and chiplets
-- Modular cryogenic systems with photonic interconnects
-- Adaptive fault-tolerant error correction
-- Pulse-level control and real-time calibration
-- Stretch roadmap: **1,000,000 physical qubits** and **10,000 logical qubits** by 2030
-
-## Quick Install (pre-release)
+## Quick install (pre-release)
 
 ```bash
-pip install git+https://github.com/qontos/qontos.git@v0.2.0        # SDK
-pip install git+https://github.com/qontos/qontos-sim.git@v0.1.0    # Simulators
+pip install "qontos-sim @ git+https://github.com/qontos/qontos-sim.git@v0.1.0"
+pip install "qontosq @ git+https://github.com/qontos/qontosq.git@v0.4.0"
 ```
+
+## Status, stated honestly
+
+- **Software**: an engineering alpha, not a market-validated product. Useful today for
+  building and simulating circuits and for modular-architecture planning.
+- **Research**: a candidate erasure-aware seam co-design for modular error correction,
+  internally validated in simulation, pending external review and a patent filing. Not
+  yet peer-reviewed.
+- **Hardware**: architecture and simulation only. No qubits have been fabricated. Our own
+  resource estimator reports that the current QONTOS-1 design sits above the
+  fault-tolerance threshold, a validation-machine design rather than a fault-tolerant one.
+
+## Long-term ambition (aspiration, not a current capability)
+
+QONTOS aims to build a native modular superconducting quantum computer, joining
+superconducting modules with a photonic interconnect. The direction includes tantalum
+transmon chiplets, modular cryogenics with photonic links, erasure-aware error
+correction, and pulse-level control. Any qubit-count or date targets are long-term
+aspirations gated by engineering milestones (a gate ladder from first hardware through
+below-threshold operation), not commitments and not current capabilities.
 
 ## Links
 
-- [Public Registry](https://github.com/qontos/.github/blob/main/docs/public-registry.md)
 - [Release & Install Policy](https://github.com/qontos/.github/blob/main/docs/release-install-policy.md)
-- [Technical Whitepaper](https://github.com/qontos/qontos-research/blob/main/whitepaper/QONTOS_Technical_Whitepaper.md)
-- [Benchmark Evidence](https://github.com/qontos/qontos-benchmarks/blob/main/docs/evidence.md)
-- [Roadmap 2030](https://github.com/qontos/qontos-research/blob/main/roadmap/ROADMAP_2030.md)
+- [qontos-sim](https://github.com/qontos/qontos-sim) and [qontosq](https://github.com/qontos/qontosq) documentation
 - [Examples](https://github.com/qontos/qontos-examples)
+
+Research papers, benchmark evidence, and the hardware roadmap are being prepared and
+will be linked here as each becomes public.
 
 ## Contributing
 
